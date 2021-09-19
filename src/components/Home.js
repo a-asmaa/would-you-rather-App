@@ -1,16 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Tabs, Tab, Spinner } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { handleQuestions } from '../actions/questions';
+import { useSelector } from 'react-redux';
 import Question from './Question';
 
 export default function Home() {
 
-  const dispatch = useDispatch();
-  
-  useEffect(() => {
-    dispatch(handleQuestions())
-  }, [])
 
 
   const questions = useSelector(state => state.questions)

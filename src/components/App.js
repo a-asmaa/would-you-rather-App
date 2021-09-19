@@ -15,6 +15,7 @@ import NewQuestion from './NewQuestion';
 import { Container, Spinner } from 'react-bootstrap';
 import NotFound from './NotFound';
 import Result from './Result';
+import { handleQuestions } from '../actions/questions';
 
 
 
@@ -25,11 +26,12 @@ export default function App() {
   
   useEffect(() => {
     dispatch(handleGetUsers());
+    dispatch(handleQuestions())
   }, [] )
 
   //const LoggedUser = useSelector(state => state.loggedUser);
   const IsLogged = useSelector(state => state.loggedUser !== null);
-  const IsLoading = useSelector(state => Object.keys(state.users).length === 0);
+  const IsLoading = useSelector(state => Object.keys(state.questions).length === 0);
 
   return (
 

@@ -45,7 +45,7 @@ export default function Signin() {
                     </Form.Group>
                         <Button variant="primary" type="submit" onClick={handleLogin} 
                                 disabled={user ===''} style={{marginTop: '1rem', width: "-webkit-fill-available"}}>
-                            <Link to="/" style={{textDecoration: "none", color: 'white'}}> Sign in </Link>
+                            Sign in 
                         </Button>
                 </Form>
 
