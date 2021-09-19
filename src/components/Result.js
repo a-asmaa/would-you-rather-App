@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
 import { Alert, Card, Col, Image,  ProgressBar, Row } from 'react-bootstrap';
 import { connect, } from 'react-redux';
+import NotFound from './NotFound';
 
 
 class Result extends Component {
     
     render() {
 
-        const {id, question, user, loggedUser}= this.props;
+        const { question, users, loggedUser}= this.props;
         
-   
-         console.log(question, user);
+        if (typeof question === 'undefined') {
+            return <NotFound />
+           }
+
+        const user = users[question.author] ;
+        console.log(question, user);
 
         const totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length
 
@@ -60,7 +65,7 @@ function mapStateToProps({questions, users, loggedUser}, props){
      return {
          question: questions[id],
          id, 
-         user: users[questions[id].author],
+         users,
          loggedUser: loggedUser
      }
 }

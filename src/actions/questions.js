@@ -1,5 +1,5 @@
 import { _getQuestions, _saveQuestion, _saveQuestionAnswer } from "../data"
-import { setLoggedUser, updateLoggedUser } from "./loggedUser"
+import { updateLoggedUser } from "./loggedUser"
 import { handleGetUsers } from "./users"
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'

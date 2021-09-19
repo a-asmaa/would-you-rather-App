@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setLoggedUser } from '../actions/loggedUser';
 import { Card, Container, Form, Image } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
 
 
 export default function Signin() {

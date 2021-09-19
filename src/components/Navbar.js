@@ -1,6 +1,5 @@
-import Button from 'react-bootstrap/Button';
 import React from 'react'
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { Container, Nav, Navbar } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoggedUser } from '../actions/loggedUser';
 import { Link } from 'react-router-dom';

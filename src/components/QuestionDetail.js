@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Button from 'react-bootstrap/Button';
 import { handleAnswerQuestion } from '../actions/questions';
 import { Redirect } from 'react-router';
+import NotFound from './NotFound';
  
 
 class QuestionDetail extends Component {
@@ -29,12 +30,20 @@ class QuestionDetail extends Component {
 
     render() {
 
-        const {question, author, id} = this.props;
+        const {question, users, id} = this.props;
+
+        console.log(this.props)
+
+        if (typeof question === 'undefined') {
+         return <NotFound />
+        }
+        
         const optionOne = question.optionOne.text;
         const optionTwo = question.optionTwo.text;
         const answer = this.state.answer;
 
-        console.log(this.props)
+        const author =   users[question.author] ;
+
         
         const path=`/result/${id}`
 
@@ -76,7 +85,7 @@ function mapStateToProps({users, questions, loggedUser}, props){
 
    const { id } = props.match.params
     return {
-        author: users[questions[id].author],
+        users,
         question: questions[id],
         id,
         loggedUser
