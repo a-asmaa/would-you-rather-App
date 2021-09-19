@@ -72,6 +72,7 @@ export function handleAnswerQuestion({ qid, answer }){
         const { loggedUser } = getState();
         return _saveQuestionAnswer({ authedUser: loggedUser.id, qid, answer })
         .then(()=> {
+            console.log(answer);
             dispatch(addAnswerToQuestion(qid ,answer, loggedUser.id))
             dispatch(updateLoggedUser(qid, answer))
             dispatch(handleGetUsers())

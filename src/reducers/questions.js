@@ -19,7 +19,7 @@ export default function questions(state={}, action){
 
             return {...state,
                 [action.qid]: {...state[action.qid], 
-                    [action.answer]: {...state[action.answer], 
+                    [action.answer]: {...state[action.qid][action.answer],     // take care 
                        votes: state[action.qid][action.answer].votes.concat([action.author]) }
                 }
             }

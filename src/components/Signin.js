@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setLoggedUser } from '../actions/loggedUser';
 import { Card, Container, Form, Image } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 
 export default function Signin() {
@@ -44,7 +45,7 @@ export default function Signin() {
                     </Form.Group>
                         <Button variant="primary" type="submit" onClick={handleLogin} 
                                 disabled={user ===''} style={{marginTop: '1rem', width: "-webkit-fill-available"}}>
-                            Sign in
+                            <Link to="/" style={{textDecoration: "none", color: 'white'}}> Sign in </Link>
                         </Button>
                 </Form>
 

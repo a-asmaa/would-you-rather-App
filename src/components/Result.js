@@ -7,7 +7,7 @@ class Result extends Component {
     
     render() {
 
-        const {id, question, user}= this.props;
+        const {id, question, user, loggedUser}= this.props;
         // const answeredQues= Object.keys(loggedUser.answers).length ;
          //  const totalQuestions = Object.keys(useSelector(state => state.questions)).length ;
    
@@ -17,7 +17,8 @@ class Result extends Component {
 
         let list = [question.optionOne, question.optionTwo];
         console.log(list);
-        console.log(list.sort((a,b) => question['optionOne'].votes.length -  question['optionTwo'].votes.length));
+     //   list = list.sort((a,b) => question['optionOne'].votes.length -  question['optionTwo'].votes.length);
+    //    console.log(list);
 
 
         return ( <Card style={{marginTop: "1rem", textAlignLast: "left"}}>
@@ -30,8 +31,9 @@ class Result extends Component {
                     <Card.Title> Results: </Card.Title>
                     {list.map(option => {
                         let percentage = option.votes.length * 100 / totalVotes;
-
-                        return <Alert key={option.text} variant="success">
+                        let userAnswer= option.votes.includes(loggedUser);
+                            console.log(userAnswer);
+                        return <Alert key={option.text} variant={userAnswer ? "success" : "secondary"}>
                         <Alert.Heading  style={{fontSize: "1.1rem"}}>Would you rather {option.text}</Alert.Heading>
                         <ProgressBar striped variant="success" now={percentage} />
                         <hr />
@@ -52,13 +54,15 @@ class Result extends Component {
 }
 
 
-function mapStateToProps({questions, users}, props){
+function mapStateToProps({questions, users, loggedUser}, props){
 
     const { id } = props.match.params
+    
      return {
          question: questions[id],
          id, 
-         user: users[questions[id].author]
+         user: users[questions[id].author],
+         loggedUser: loggedUser.id
      }
 }
 

@@ -11,8 +11,13 @@ export default function LeaderboardUser() {
 
     console.log(users);
     let orderUsers = users.sort((a,b) => {
-      return ((b.questions.length + Object.keys(b.answers).length) - (a.questions.length + Object.keys(a.answers)))
+        console.log(a, b);
+        const score_a = a.questions.length + Object.keys(a.answers).length
+        const score_b = b.questions.length + Object.keys(b.answers).length
+
+      return (score_b - score_a)
     })
+
 
     console.log(orderUsers);
     return (
